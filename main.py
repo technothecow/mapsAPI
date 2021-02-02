@@ -20,11 +20,20 @@ class Window(Ui_MainWindow, QMainWindow):
             self.statusbar.showMessage('Request error', 5000)
 
     def keyPressEvent(self, event: QKeyEvent) -> None:
-        if event.key() == 16777238 and float(self.lineEdit_3.text()) < 90:
-            self.lineEdit_3.setText(str(float(self.lineEdit_3.text()) * 2))
-            self.button_clicked()
-        elif event.key() == 16777239 and float(self.lineEdit_3.text()) > 0.01:
-            self.lineEdit_3.setText(str(float(self.lineEdit_3.text()) / 2))
+        key = event.key()
+        if key in {16777238, 16777239, 65, 68, 87, 83}:
+            if key == 16777238 and float(self.lineEdit_3.text()) < 90:
+                self.lineEdit_3.setText(str(float(self.lineEdit_3.text()) * 2))
+            elif key == 16777239 and float(self.lineEdit_3.text()) > 0.01:
+                self.lineEdit_3.setText(str(float(self.lineEdit_3.text()) / 2))
+            elif key == 83 and abs(float(self.lineEdit_2.text()) - float(self.lineEdit_3.text())) < 85:
+                self.lineEdit_2.setText(str(float(self.lineEdit_2.text()) - float(self.lineEdit_3.text())))
+            elif key == 87 and abs(float(self.lineEdit_2.text()) + float(self.lineEdit_3.text())) < 85:
+                self.lineEdit_2.setText(str(float(self.lineEdit_2.text()) + float(self.lineEdit_3.text())))
+            elif key == 65 and abs(float(self.lineEdit.text()) - float(self.lineEdit_3.text())) < 180:
+                self.lineEdit.setText(str(float(self.lineEdit.text()) - float(self.lineEdit_3.text())))
+            elif key == 68 and abs(float(self.lineEdit.text()) + float(self.lineEdit_3.text())) < 180:
+                self.lineEdit.setText(str(float(self.lineEdit.text()) + float(self.lineEdit_3.text())))
             self.button_clicked()
 
 

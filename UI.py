@@ -39,6 +39,9 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.pushButton, 1, 0, 1, 3)
 
+        self.label_2 = QLabel(self.centralwidget)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setGeometry(QRect(10, 113, 581, 20))
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -47,11 +50,15 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         QMetaObject.connectSlotsByName(MainWindow)
+    # setupUi
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"mapsAPI", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.label.setText("")
         self.lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"latitude", None))
         self.lineEdit_2.setPlaceholderText(QCoreApplication.translate("MainWindow", u"longitude", None))
         self.lineEdit_3.setPlaceholderText(QCoreApplication.translate("MainWindow", u"scale", None))
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Load", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"*Due to the way pyqt works, to move around the map, use WASD instead of arrows", None))
+    # retranslateUi
+
