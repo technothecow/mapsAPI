@@ -2,6 +2,7 @@ from UI import Ui_MainWindow
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel
 import sys
+from request import generate_map
 
 
 class Window(Ui_MainWindow, QMainWindow):
@@ -12,12 +13,12 @@ class Window(Ui_MainWindow, QMainWindow):
         self.pushButton.clicked.connect(self.button_clicked)
 
     def button_clicked(self):
-        print('!!!')
-        self.pixmap = QPixmap('map.png')
-        self.image = QLabel(self)
-        self.image.move(30, 100)
-        self.image.resize(400, 300)
-        self.image.setPixmap(self.pixmap)
+        if generate_map(self.lineEdit.text(), self.lineEdit_2.text(), self.lineEdit_3.text()):
+            self.pixmap = QPixmap('map.png')
+            self.label.setPixmap(self.pixmap)
+        else:
+            self.statusbar.showMessage('Request error', 5000)
+
 
 app = QApplication(sys.argv)
 window = Window()
